@@ -5,15 +5,15 @@ import React, { useEffect, useState } from "react";
 import Login from "./login";
 const Page = () => {
   const [formData, setFormData] = useState({
-    email: "captain@gmail.com",
-    password: "123",
+    email: "",
+    password: "",
   });
   const handleLogin = async (e) => {
-    const { email, password } = formData;
     e.preventDefault();
 
     const user = await Login(formData);
     console.log("user", user);
+    return;
   };
 
   return (
@@ -29,9 +29,7 @@ const Page = () => {
         <div className="col-span-5 overflow-scroll rounded-3xl border-fuchsia-400 py-8 pl-24 md:pl-8 lg:overflow-hidden">
           <ul className="mx-auto -ml-10 flex flex-col items-center gap-7 border-fuchsia-900 text-xl text-slate-200">
             <li className="flex flex-col gap-2">
-              <p onClick={handleLogin} className="text-md font-semibold">
-                Login
-              </p>
+              <p className="text-md font-semibold">Login</p>
             </li>
             <li>
               <form className="grid border-teal-700 text-xs" action="">
@@ -41,18 +39,27 @@ const Page = () => {
                       placeholder="Email"
                       className="h-10 w-56 rounded-md bg-slate-900 px-3 py-1 outline-none outline-2 transition-all placeholder:opacity-50 focus:outline-indigo-900"
                       type="email"
-                      name=""
-                      id=""
+                      name="email"
+                      value={formData.email}
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
                     />
                     <input
                       placeholder="Password"
                       className="h-10 w-56 rounded-md bg-slate-900 px-3 py-1 outline-none outline-2 placeholder:opacity-50 focus:outline-indigo-900"
                       type="password"
-                      name=""
-                      id=""
+                      name="password"
+                      value={formData.password}
+                      onChange={(e) =>
+                        setFormData({ ...formData, password: e.target.value })
+                      }
                     />
 
-                    <button className="relative mx-auto mt-1 w-32 rounded-md bg-gradient-to-l from-indigo-600 to-violet-700 px-3 py-2 hover:bg-indigo-800 hover:from-indigo-700 hover:to-violet-800">
+                    <button
+                      onClick={handleLogin}
+                      className="relative mx-auto mt-1 w-32 rounded-md bg-gradient-to-l from-indigo-600 to-violet-700 px-3 py-2 hover:bg-indigo-800 hover:from-indigo-700 hover:to-violet-800"
+                    >
                       Login
                       <span className="loader absolute right-4 opacity-0"></span>
                     </button>

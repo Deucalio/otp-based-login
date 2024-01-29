@@ -42,9 +42,8 @@ app.post("/login", async (req, res) => {
   const { email, password } = req.body;
   console.log("req.body", req.body);
 
-  res
-    .status(200)
-    .json({ message: "Login Successful", user: { id: 1, email, password } });
+  // res.status(400).json({ message: "Invalid Credentials" });
+  res.status(200).json({ id: 1, email,  name: "Hamad Ali", firstName: "Hamad", lastName: "Ali", store: "Shopify" });
 });
 
 // listen to port
