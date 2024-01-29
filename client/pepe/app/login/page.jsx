@@ -18,7 +18,7 @@ const Page = () => {
               <p class="text-md font-semibold">Login</p>
             </li>
             <li>
-              <form class="grid border-teal-700 text-xs md:text-sm" action="">
+              <form class="grid border-teal-700 text-xs" action="">
                 <ul class="">
                   <li class="relative flex flex-col gap-6">
                     <input
@@ -41,7 +41,7 @@ const Page = () => {
                       <span class="loader absolute right-4 opacity-0"></span>
                     </button>
                   </li>
-                  <li class="mt-4">
+                  <li class="mt-4 ml-3">
                     <p>
                       Don't have an account?
                       <Link href={"/register"}>
